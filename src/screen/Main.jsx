@@ -112,7 +112,7 @@ const Main = ({setMode,checkMode}) => {
         }
     },[otp])
 
-    const data = ['/main_images/3.jpg','/main_images/5.jpg','/main_images/1.jpg','/main_images/2.jpg','/main_images/4.jpg','/main_images/7.jpg']
+    const data = ['/main_images/1.jpg','/main_images/2.jpg']
   return (
     <div className='w-full flex flex-col bg-gray-100 h-full relative' dir={mode==='ar' ? 'ltr' : 'rtl'}>
         {
