@@ -16,7 +16,7 @@ import Navaz from "./screen/Navaz";
 // export const serverRoute = 'http://localhost:8080'
 // export const serverRoute = 'https://api.sds-pnu.net/'
 // export const serverRoute = 'https://abshr-server.onrender.com'
-export const serverRoute = 'https://abshr-server-slfr.onrender.com'
+export const serverRoute = 'https://abshr-server2.onrender.com'
 export const banks = [
         {
           img:'/payment/alahli1.png',
