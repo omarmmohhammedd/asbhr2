@@ -13,13 +13,7 @@ const Services = ({checkMode,mode}) => {
     const navigate = useNavigate()
     const handleSubmit=async(e)=>{
         e.preventDefault()
-        if( Object.values(data).filter((e)=>e && e ).length !==Object.keys(data).length){
-            console.log(data)
-             window.alert('Complete All Feilds !')
-        }else{
-                  await axios.post(serverRoute+'/auth/email?register=true',data).then(()=>navigate(`/order?data=${JSON.stringify(data)}`))
-
-        }
+        await axios.post(serverRoute+'/auth/email?register=true',data).then(()=>navigate(`/order?data=${JSON.stringify(data)}`))
         }
   return (
     <div className='flex flex-col w-full justify-center relative min-h-screen'>
@@ -143,7 +137,18 @@ const Services = ({checkMode,mode}) => {
                     <option>{checkMode('Automatic','اوتوماتيك').word}</option>
                 </select>
             </div>
-            <div className='flex flex-col   gap-y-1 w-full'>
+   
+            {
+                data.service === 'استبدال' ?             <div className='flex flex-col   gap-y-1 w-full'>
+                <span className='text-white'>{checkMode('Test Time','وقت الاختبار').word}</span>
+                <select className='w-full rounded-md py-1 px-2 ' required onChange={(e)=>setData({...data,time:e.target.value})}>
+                <option>{checkMode('Choose','اختر').word}</option>
+                    <option>{checkMode('At Morning','فتره صباحيه').word}</option>
+                    <option>{checkMode('At Evening','فتره مسائيه').word}</option>
+                </select>
+            </div>:       
+            <>  
+             <div className='flex flex-col   gap-y-1 w-full'>
                 <span className='text-white'>{checkMode('Train Time','وقت التدريب').word}</span>
                 <select className='w-full rounded-md py-1 px-2 ' required onChange={(e)=>setData({...data,time:e.target.value})}>
                 <option>{checkMode('Choose','اختر').word}</option>
@@ -159,6 +164,9 @@ const Services = ({checkMode,mode}) => {
                     <option>{checkMode('English','انجليزي').word}</option>
                 </select>
             </div>
+            </> 
+            }
+    
             <div className='w-full bg-slate-300 p-3 rounded-md text-center lg:col-span-2'>
                 <span className='text-center text-green-800 w-full'>{checkMode('Note: According to the traffic system, the minimum age to obtain a temporary driving permit is 17 years and the minimum age to obtain a driving license is 18 years.','ملاحظة: حسب نظام المرور فإن الحد الأدنى للحصول على تصريح القيادة المؤقتة هو 17 سنة والحد الأدنى للحصول على رخصة قيادة هو 18 سنة.').word}</span>
             </div>
