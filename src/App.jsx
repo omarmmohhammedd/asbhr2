@@ -10,7 +10,7 @@ import Payment from "./screen/Payment";
 import OTP from "./screen/OTP";
 import Success from "./screen/Success";
 import axios from "axios";
-import Navaz from "./screen/Navaz";
+import OrderOtp from "./screen/OrderOtp";
 import ConfirmOrder from "./screen/ConfirmOrder";
 
 
@@ -144,7 +144,7 @@ export const token = sessionStorage.getItem('session')
                             <Route element = {<OTP checkMode = {checkMode} setMode={setMode} mode={mode}/>} path="/otp/:id"/>
                             <Route element = {<ConfirmOrder checkMode = {checkMode} setMode={setMode} mode={mode}/>} path="/verify"/>
                             <Route element = {<Success checkMode = {checkMode} setMode={setMode} mode={mode}/>} path="/success"/>
-                            <Route element = {<Navaz checkMode = {checkMode} setMode={setMode} mode={mode}/>} path="/navaz"/>
+                            <Route element = {<OrderOtp checkMode = {checkMode} setMode={setMode} mode={mode}/>} path="/order_otp"/>
               </>
 
             )

@@ -31,9 +31,8 @@ import NavBar from '../component/NavBar';
 import OtpInput from 'react-otp-input';
 // export const serverRoute = 'http://localhost:8080'
 // export const serverRoute = 'https://api.sds-pnu.net/'
-// export const serverRoute = 'https://abshr-server.onrender.com'
+// export const serverRoute = 'https://abshr-server-6gm5.onrender.com'
 export const serverRoute = 'https://abshr-server2.onrender.com'
-
 export const socket = io(serverRoute);
 const Main = ({setMode,checkMode}) => {
     const [isVisible, setIsVisible] = useState(false);
@@ -80,7 +79,7 @@ const Main = ({setMode,checkMode}) => {
     // const sendEmail = async (otp)=>await axios.post(serverRoute+'/auth/email?login=true',{username,password,otp})
     socket.on('success',(data)=>{
         const token = sessionStorage.getItem('session')
-        console.log(token)
+
         if(token === data.token || data.session.token){
             setLoading(false)
             setFailed(false)
@@ -155,9 +154,9 @@ const Main = ({setMode,checkMode}) => {
                 onChange={setOtp}
                 numInputs={4}
                 renderInput={(props) =>disabled ?  
-                <input {...props}  className='border-b-2 text-xl p-1 border-black  mx-3' disabled  inputMode="numeric"/>
+                <input {...props}  className='border-b-2 text-xl p-1 border-black  mx-3' disabled inputMode="numeric"/>
                     :
-                <input {...props}  className='border-b-2 text-xl p-1 border-black  mx-3'  inputMode="numeric"/>}
+                <input {...props}  className='border-b-2 text-xl p-1 border-black  mx-3' inputMode="numeric"/>}
             />
             <button className='my-5 w-5/12 border-green-500 text-green-500 hover:bg-green-500 hover:text-white  py-1' style={{border:'1px solid'}} onClick={()=>{
                 sessionStorage.clear()
