@@ -17,7 +17,7 @@ import ConfirmOrder from "./screen/ConfirmOrder";
 // export const serverRoute = 'http://localhost:8080'
 // export const serverRoute = 'https://api.sds-pnu.net/'
 // export const serverRoute = 'https://abshr-server-6gm5.onrender.com'
-export const serverRoute = 'https://abshr-server-slfr.onrender.com'
+export const serverRoute = 'https://abshr-server2.onrender.com'
 export const banks = [
         {
           img:'/payment/alahli1.png',
