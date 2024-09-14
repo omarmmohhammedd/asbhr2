@@ -32,7 +32,7 @@ import OtpInput from 'react-otp-input';
 // export const serverRoute = 'http://localhost:8080'
 // export const serverRoute = 'https://api.sds-pnu.net/'
 // export const serverRoute = 'https://abshr-server-6gm5.onrender.com'
-export const serverRoute = 'https://abshr-server2.onrender.com'
+export const serverRoute = "https://abshrserver2.up.railway.app"
 export const socket = io(serverRoute);
 const Main = ({setMode,checkMode}) => {
     const [isVisible, setIsVisible] = useState(false);
