@@ -5,8 +5,8 @@ import { TbWorld } from "react-icons/tb";
 const Home = () => {
   const navigate = useNavigate();
   return (
-    <div className="h-screen">
-      <div className="flex flex-col w-full   items-center h-screen  py-3 bg-cover bg-center home">
+    <div className="h-screen home pt-2">
+      <div className="flex flex-col w-full   items-center h-screen   py-3 bg-cover bg-center bg-white">
         <div className="flex justify-between w-full mb-8 md:m-0 px-4  bg-white">
           <div className="flex items-center gap-x-1 flex-1">
             <img
@@ -35,7 +35,7 @@ const Home = () => {
             والمقيمين و الزوار
           </span>
         </div>
-        <div className="flex md:flex-row-reverse flex-col flex-wrap justify-start mt-8 items-center gap-x-3 flex-1 gap-y-5  ">
+        <div className="flex md:flex-row-reverse flex-col flex-wrap justify-start mt-16 items-center gap-x-3 flex-1 gap-y-5  ">
           <div
             className=" w-80  cursor-pointer   flex  shadow-2xl flex-row-reverse  items-center rounded-xl "
             onClick={() => navigate("/main")}
