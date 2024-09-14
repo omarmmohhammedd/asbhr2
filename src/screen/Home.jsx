@@ -1,70 +1,93 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { TbWorld } from "react-icons/tb";
+
 const Home = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   return (
-    <div className='flex flex-col w-full   items-center h-screen p-10 bg-cover bg-center home' >
-      <div className='flex justify-end w-full mb-8 md:m-0 '>
-        <img src='/logo.png' className=''/>
-      </div>
-      <div className='flex md:flex-row-reverse flex-col flex-wrap justify-center items-center gap-x-3 flex-1 gap-y-10 py-5 '>
-      <div >
-        <div className='md:w-72 md:h-72 w-80   flex md:flex-col flex-row-reverse  justify-center md:items-center rounded-xl card' onClick={()=> navigate('/main')}>
-          <div className='md:flex-1  bg-gray-200 flex items-center justify-center w-full md:rounded-t-xl  rounded-r-xl  hover:bg-green-200 '>
-          <div className="front"><img src='individual 1.png' className='h-32 p-3 md:p-0'/></div>
-          <div className="back"><img src='individual.png' className='h-40 p-3 md:p-0'/></div>
+    <div className="h-screen">
+      <div className="flex flex-col w-full   items-center h-screen  py-3 bg-cover bg-center home">
+        <div className="flex justify-between w-full mb-8 md:m-0 px-4  bg-white">
+          <div className="flex items-center gap-x-1 flex-1">
+            <img
+              src="/main_images/nav1.png"
+              className="w-14 border-r-2 pr-1 "
+            />
+            <img src="/main_images/nav3.jpg" className="w-10" />
           </div>
-          <div className='flex flex-col bg-green-600 w-full  md:rounded-b-xl  rounded-l-xl '>
-            <div className='flex flex-col justify-center items-center  my-1 py-1 flex-1'>
-            <span className='text-xl  text-white'>افراد</span>
-            <span className='text-xl  text-white'>Individuals</span>
+          <div className="flex items-center flex-1   text-green-700 font-bold gap-x-1">
+            <TbWorld className="text-2xl" />
+            <span>English</span>
+          </div>
+          <div className="flex-1 justify-end flex items-center">
+            <img src="individual 1.png" className="w-14" />
+          </div>
+        </div>
+        <div className="w-full flex items-center justify-center text-center gap-y-3 flex-col">
+          <span className="text-lg font-bold text-gray-700">
+            أهلآ بكم في ابشر
+          </span>
+          <span
+            className="w-full text-center text-xs pr-3 text-gray-400 font-semibold"
+            style={{ fontSize: "12px" }}
+          >
+            المنصة الإلكترونية لخدمات وزارة الداخلية و قطاعتها , لخدمة المواطنين
+            والمقيمين و الزوار
+          </span>
+        </div>
+        <div className="flex md:flex-row-reverse flex-col flex-wrap justify-start mt-8 items-center gap-x-3 flex-1 gap-y-5  ">
+          <div
+            className=" w-80  cursor-pointer   flex  shadow-2xl flex-row-reverse  items-center rounded-xl "
+            onClick={() => navigate("/main")}
+          >
+            <div className="flex items-center justify-center w-fit p-2   ">
+              <img src="individual 1.png" className="h-16 " />
+            </div>
+            <div className="flex flex-col ">
+              <div className="flex flex-col justify-center items-end  my-1 py-5 flex-1 gap-y-1">
+                <span className="  font-bold"> أبشر أفراد </span>
+                <span className=" text-gray-500  text-right font-bold my-1 text-xs">
+                  خدمات المواطنين والمقيمين و الزوار
+                </span>
+              </div>
             </div>
           </div>
-        </div>
-        <div className='hidden md:flex flex-col gap-y-1 items-center justify-center mt-3'>
-          <span className='text-xl  text-black'>خدمات الكترونيه متكامله</span>
-          <span className='text-xl  text-black'>Integrated eServices</span>
-        </div> 
-        </div>
-      <div>
-        <div className='md:w-72 md:h-72 w-80   flex md:flex-col flex-row-reverse justify-center md:items-center  rounded-xl card ' onClick={()=> navigate('/main')}>
-          <div className='md:flex-1 bg-gray-200 flex items-center justify-center w-full md:rounded-t-xl  rounded-r-xl hover:bg-blue-200 '>
-            <div className="front"><img src='individual 2.png' className='h-32 p-3 md:p-0'/></div>
-            <div className="back"><img src='individual.png' className='h-40 p-3 md:p-0'/></div>
-          </div>
-          <div className='flex flex-col bg-blue-600 w-full  md:rounded-b-xl  rounded-l-xl'>
-            <div className='flex flex-col justify-center items-center  my-1 py-1 flex-1'>
-            <span className='text-xl  text-white'>أعمال</span>
-            <span className='text-xl text-white'>Business</span>
+          <div
+            className=" cursor-pointer w-80   flex  shadow-2xl flex-row-reverse  items-center rounded-xl "
+            onClick={() => navigate("/main")}
+          >
+            <div className="flex items-center justify-center w-fit p-2   ">
+              <img src="individual 2.png" className="h-16 " />
+            </div>
+            <div className="flex flex-col ">
+              <div className="flex flex-col justify-center items-end  my-1 py-5 flex-1 gap-y-1">
+                <span className="  font-bold"> أبشر أعمال </span>
+                <span className=" text-gray-500  text-right font-bold my-1 text-xs">
+                  خدمات المنشاْت اصحاب الأعمال
+                </span>
+              </div>
             </div>
           </div>
-        </div>
-        <div className='hidden md:flex flex-col gap-y-1 items-center justify-center mt-3'>
-          <span className='text-xl  text-black'>خدمات اعمالك بين يديك </span>
-          <span className='text-xl  text-black'>Establishments eServices</span>
-        </div> 
-        </div>
-      <div>
-        <div className='md:w-72 md:h-72 w-80   flex md:flex-col flex-row-reverse justify-center md:items-center  rounded-xl card' onClick={()=> navigate('/main')}>
-          <div className='md:flex-1 bg-gray-200 flex items-center justify-center w-full md:rounded-t-xl  rounded-r-xl hover:bg-blue-200'>
-          <div className="front"><img src='individual 3.png' className='h-32 md:p-0 p-3'/></div>
-          <div className="back"><img src='individual.png' className='h-40 md:p-0 p-3'/></div>
-          </div>
-          <div className='flex flex-col bg-amber-950 w-full md:rounded-b-xl  rounded-l-xl'>
-            <div className='flex flex-col justify-center items-center  my-1 py-1 flex-1'>
-            <span className='text-xl  text-white'>حكومة</span>
-            <span className='text-xl  text-white'>Government</span>
+          <div
+            className=" cursor-pointer w-80   flex  shadow-2xl flex-row-reverse  items-center rounded-xl "
+            onClick={() => navigate("/main")}
+          >
+            <div className="flex items-center justify-center w-fit p-2   ">
+              <img src="individual 3.png" className="h-16 " />
+            </div>
+            <div className="flex flex-col ">
+              <div className="flex flex-col justify-center items-end  my-1 py-5 flex-1 gap-y-1">
+                <span className="  font-bold"> أبشر حكومة </span>
+                <span className=" text-gray-500  text-right font-bold my-1 text-xs">
+                  خدمات منسوبي القطاع الحكومي
+                </span>
+              </div>
             </div>
           </div>
-        </div>
-        <div className='hidden md:flex flex-col gap-y-1 items-center justify-center mt-3'>
-          <span className='text-xl  text-black'> خدمات على مدار الساعة  </span>
-          <span className='text-xl  text-black'>Available 24/7</span>
-        </div> 
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
